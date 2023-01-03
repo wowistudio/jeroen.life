@@ -1,0 +1,2 @@
+linkedin:
+	node linkedin.js
