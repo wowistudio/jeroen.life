@@ -1,4 +1,8 @@
 .DS_Store
+.idea/
 .env
 .next/
 node_modules/
+favicon.ai
+favicon.png
+nextjs.conf.d

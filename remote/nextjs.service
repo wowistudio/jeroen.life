@@ -1,0 +1,12 @@
+[Unit]
+Description=jeroen.life-nextjs
+
+[Service]
+Restart=always
+RestartSec=3s
+User=root
+WorkingDirectory=/root/jeroen.life
+ExecStart=/root/jeroen.life/remote/start.sh
+
+[Install]
+WantedBy=multi-user.target

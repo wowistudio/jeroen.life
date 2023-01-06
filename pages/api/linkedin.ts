@@ -10,8 +10,17 @@ type Experience = {
   location: string
 }
 
+type Education = {
+  image_url: string
+  from: string
+  till: string
+  study: string
+  location: string
+}
+
 type Data = {
   experiences: Experience[]
+  education: Education[]
 }
 
 export default function handler(
@@ -19,6 +28,29 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   res.status(200).json({
+    education: [
+      {
+        image_url: 'https://media.licdn.com/dms/image/C4E0BAQFwaGpwaod9mQ/company-logo_100_100/0/1670699851986?e=1680739200&v=beta&t=22Nd37fFmN2v3nGDpLa1jhdnbWJ52TJhHEccnux3pqc',
+        location: 'Delft University of Technology',
+        study: "Master's Degree, Industrial Ecology",
+        from: '2014',
+        till: '2016'
+      },
+      {
+        image_url: 'https://media.licdn.com/dms/image/C560BAQExl_jRyG8lug/company-logo_100_100/0/1519885427487?e=1680739200&v=beta&t=-KdsLRq1V2I_VlNdyWaq-pIQwceHaHDgEdxihIce8w4',
+        location: 'New York Code + Design Academy',
+        study: '9.5, Computer Programming',
+        from: '2017',
+        till: '2018'
+      },
+      {
+        image_url: 'https://media.licdn.com/dms/image/C4E0BAQG0sCvdmZIhqw/company-logo_100_100/0/1656659221967?e=1680739200&v=beta&t=kU2X11g9Ek2MUFg6yGD46GK5FvdUW3o_OaEECoZGYAk',
+        location: 'Vrije Universiteit Amsterdam (VU Amsterdam)',
+        study: 'Science, Business & Innovation',
+        from: '2010',
+        till: '2014'
+      }
+    ],
     experiences: [
       {
         image_url: 'https://media.licdn.com/dms/image/C4D0BAQGV3O0pFNZK7Q/company-logo_100_100/0/1643640268203?e=1680739200&v=beta&t=y84XmuF5J94RFERaq19E64DPlywgfKsMi4fsrUtLjh4',
