@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+input:focus {
+    -webkit-appearance: none;
+}
+
+input {
+    @apply shadow-none ring-0 border-0 outline-none;
+}
+
 body {
     font-family: 'Source Code Pro', monospace;
 }

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect, createRef } from 'react';
 
 import InputBlock from "./input-block";
 import OutputBlock from "./output-block";
@@ -12,8 +12,6 @@ type ManagerProps = {
 type SessionTabProps = {
     activeTab?: number
 }
-
-type OnEnter = (value: string) => void
 
 const SessionCareer: FC<SessionTabProps> = () => {
     return (
@@ -114,7 +112,11 @@ const SessionCode: FC<SessionTabProps> = () => {
     )
 }
 
-const SessionTabPlayground: FC<SessionTabProps> = () => {
+const SessionTabPlayground: FC<SessionTabProps> = ({ activeTab }) => {
+    const inputRef = createRef<HTMLInputElement>()
+
+    useEffect(() => inputRef.current?.focus(), [activeTab])
+
     const onEnter = (value: string) => {
         const value_original = value
         const newChildren = [
@@ -133,10 +135,14 @@ const SessionTabPlayground: FC<SessionTabProps> = () => {
         ))
 
         setChildren([
-            ...children.slice(0, children.length - 1),
-            ...newChildren,
-            (key: number, onEnter: OnEnter) => <InputBlockActive key={key} onEnter={onEnter} />
+            ...children,
+            ...newChildren
         ])
+
+        if (inputRef.current) {
+            inputRef.current.value = ""
+            inputRef.current.focus()
+        }
     }
 
     const [children, setChildren] = useState([
@@ -151,12 +157,16 @@ const SessionTabPlayground: FC<SessionTabProps> = () => {
             <OutputBlock key={key}>
                 <BlockLine>Try it yourself!</BlockLine>
             </OutputBlock>
-        ),
-        (key: number, onEnter: OnEnter) => <InputBlockActive key={key} onEnter={onEnter} />
+        )
     ])
 
 
-    return <>{children.map((child, i) => child(i, onEnter))}</>
+    return (
+        <>
+            {children.map((child, i) => child(i))}
+            <InputBlockActive onEnter={onEnter} ref={inputRef} />
+        </>
+    )
 }
 
 const SessionManager: FC<ManagerProps> = ({ activeTab }) => {
@@ -164,7 +174,7 @@ const SessionManager: FC<ManagerProps> = ({ activeTab }) => {
         return <SessionCareer />
     if (activeTab == 2)
         return <SessionCode />
-    return <SessionTabPlayground />
+    return <SessionTabPlayground activeTab={activeTab} />
 }
 
 

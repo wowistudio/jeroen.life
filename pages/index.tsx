@@ -10,7 +10,7 @@ export default function Home() {
       <Head>
         <title>jeroen.life</title>
         <meta name="description" content="It is my life. It is now or never" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

@@ -11,7 +11,6 @@ type Props = {
 const FakeTerminal: FC<Props> = () => {
     const [activeTab, setActiveTab] = useState(1)
     const [minimized, setMinimized] = useState(false)
-    const [deleted, setDeleted] = useState(false)
 
     let klass = [
         "flex flex-col w-full transition-height duration-300 ease-out lg:w-[800px] rounded-md shadow-[inset_0_0px_5px_rgba(0,0,0,0.2)] overflow-hidden bottom-0 absolute left-1/2 -translate-x-1/2",
@@ -24,7 +23,7 @@ const FakeTerminal: FC<Props> = () => {
                 <div className="px-4 py-2 bg-[#000] bg-opacity-10">
                     <div className="flex justify-between items-center">
                         <div className="flex">
-                            <SystemButton className="mr-2 bg-[#e0695f]" onClick={() => setDeleted(true)} />
+                            <SystemButton className="mr-2 bg-[#e0695f]" />
                             <SystemButton className="mr-2 bg-[#f3bd4e]" onClick={() => setMinimized(true)}>-</SystemButton>
                             <SystemButton className="bg-[#6ab557]" onClick={() => setMinimized(false)}>+</SystemButton>
                         </div>
