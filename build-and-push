@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker buildx build --platform linux/amd64 -t jphuisman92/jeroenlife:latest -f Dockerfile .
+docker push jphuisman92/jeroenlife:latest
